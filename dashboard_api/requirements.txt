@@ -1,0 +1,19 @@
+fastapi
+uvicorn
+pandas
+pyarrow
+fsspec
+
+Mapa
+cd dashboard_api
+py -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+Kafka
+Terminal 1: El Cerebro (ZooKeeper)
+./bin/zookeeper-server-start.sh ./config/zookeeper.properties
+Terminal 2: El Servidor (Kafka Broker)
+./bin/kafka-server-start.sh ./config/server.properties 
+Terminal 3: La Entrada de Datos (Productor)
+./bin/kafka-topics.sh --create --topic precip-gpm --bootstrap-server localhost:9092
+Terminal 4: La Salida de Datos (Consumidor)
+./bin/kafka-console-consumer.sh --topic precip-gpm --from-beginning --bootstrap-server localhost:9092

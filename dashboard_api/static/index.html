@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard El Niño | Monitoreo de Riesgo</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=6">
+</head>
+<body>
+    <div class="glass-panel" id="sidebar">
+        <!-- Header compacto -->
+        <div class="panel-header">
+            <h1>Monitoreo El Niño</h1>
+            <p class="subtitle">Ecuador — Riesgo de Inundación</p>
+        </div>
+
+        <!-- Estado General arriba para vista rápida -->
+        <div class="stats-box">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value" id="total-red" style="color: #f85149;">0</span>
+                    <span class="stat-desc">Crítico</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="total-yellow" style="color: #d29922;">0</span>
+                    <span class="stat-desc">Moderado</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="total-blue" style="color: #2f81f7;">0</span>
+                    <span class="stat-desc">Ligero</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="total-green" style="color: #3fb950;">0</span>
+                    <span class="stat-desc">Normal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Capas en línea compacta -->
+        <div class="section-compact">
+            <span class="section-title">Capas</span>
+            <div class="toggles-row">
+                <label class="chip" for="layer-precipitation"><input type="checkbox" id="layer-precipitation" checked>🌧️ Lluvia</label>
+                <label class="chip" for="layer-tide"><input type="checkbox" id="layer-tide" checked>🌊 Marea</label>
+            </div>
+        </div>
+
+        <!-- Simulador -->
+        <div class="section-compact">
+            <span class="section-title" style="color: #f85149;">Simulador</span>
+            <button id="btn-sim-storm" class="sim-btn">⚡ Simular Tormenta</button>
+            <button id="btn-clear-route" class="sim-btn clear-btn" style="display: none;">✕ Limpiar Ruta</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="panel-footer">
+            <button id="refresh-btn" class="refresh-btn">↻ Actualizar</button>
+            <span class="last-update" id="last-update">--:--</span>
+        </div>
+    </div>
+
+    <!-- Panel de Reportes en Vivo (Chat Stream) -->
+    <div class="glass-panel feed-panel" id="feed-sidebar">
+        <div class="feed-header">
+            <h3>📡 Reportes en Vivo</h3>
+        </div>
+        <div id="live-feed" class="feed-content">
+            <!-- Mensajes dinámicos generados en app.js -->
+        </div>
+    </div>
+
+    <!-- Contenedor del Mapa de Leaflet -->
+    <div id="map"></div>
+
+    <!-- Botón de Toggle Satelital -->
+    <button id="map-toggle-btn" class="map-toggle-btn">🌍 Satelital</button>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js?v=4"></script>
+</body>
+</html>

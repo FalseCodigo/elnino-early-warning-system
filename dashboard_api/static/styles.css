@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0d1117;
+    color: #e6edf3;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* ── Panel Glassmorphism ── */
+.glass-panel {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 280px;
+    background: rgba(13, 17, 23, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 18px;
+    z-index: 9999;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ── Header ── */
+.panel-header {
+    text-align: center;
+}
+.panel-header h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #3fb950);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin-top: 2px;
+}
+
+/* ── Stats Grid (Estado General) ── */
+.stats-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 6px;
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 2px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.stat-desc {
+    font-size: 0.6rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+}
+
+/* ── Secciones Compactas ── */
+.section-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8b949e;
+}
+
+/* Chips de capas (en fila) */
+.toggles-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.chip {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+.chip:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: rgba(88, 166, 255, 0.3);
+}
+.chip:has(input:checked) {
+    background: rgba(88, 166, 255, 0.15);
+    border-color: rgba(88, 166, 255, 0.4);
+    color: #58a6ff;
+}
+.chip input[type="checkbox"] {
+    display: none;
+}
+
+/* ── Botón Simulador ── */
+.sim-btn {
+    background: rgba(248, 81, 73, 0.08);
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    color: #f85149;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.sim-btn:hover {
+    background: rgba(248, 81, 73, 0.18);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(248, 81, 73, 0.15);
+}
+.sim-btn:active {
+    transform: translateY(0);
+}
+.clear-btn {
+    background: rgba(139, 148, 158, 0.08);
+    border-color: rgba(139, 148, 158, 0.3);
+    color: #8b949e;
+    margin-top: 4px;
+}
+.clear-btn:hover {
+    background: rgba(139, 148, 158, 0.18);
+    box-shadow: 0 4px 12px rgba(139, 148, 158, 0.15);
+}
+
+/* ── Footer (Actualizar + Timestamp) ── */
+.panel-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.refresh-btn {
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    color: #58a6ff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+.refresh-btn:hover {
+    background: rgba(88, 166, 255, 0.2);
+    transform: translateY(-1px);
+}
+.last-update {
+    font-size: 0.65rem;
+    color: #8b949e;
+    font-style: italic;
+}
+
+/* ── Botones genéricos (para popups) ── */
+.glass-btn {
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.4);
+    color: #58a6ff;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.glass-btn:hover {
+    background: rgba(88, 166, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+}
+.glass-btn:active {
+    transform: translateY(0);
+}
+
+/* ── Popups Leaflet Dark ── */
+.leaflet-popup-content-wrapper {
+    background: rgba(13, 17, 23, 0.9) !important;
+    backdrop-filter: blur(8px);
+    color: #e6edf3 !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px !important;
+}
+.leaflet-popup-tip {
+    background: rgba(13, 17, 23, 0.9) !important;
+}
+.popup-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 5px;
+}
+.popup-data {
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+/* ── Panel de Reportes en Vivo (Chat) ── */
+.feed-panel {
+    top: auto;
+    bottom: 16px;
+    height: calc(100vh - 440px); /* Ocupa el espacio sobrante debajo del panel principal */
+    min-height: 200px;
+    padding: 12px;
+    gap: 8px;
+}
+.feed-header h3 {
+    font-size: 0.85rem;
+    color: #c9d1d9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+}
+.feed-content {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 4px;
+}
+.feed-content::-webkit-scrollbar {
+    width: 4px;
+}
+.feed-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+.feed-msg {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #58a6ff;
+    padding: 6px 8px;
+    border-radius: 0 6px 6px 0;
+    animation: slideIn 0.3s ease;
+    line-height: 1.3;
+}
+.feed-msg.roja {
+    border-left-color: #f85149;
+    background: rgba(248, 81, 73, 0.08);
+}
+.feed-msg.amarilla {
+    border-left-color: #d29922;
+    background: rgba(210, 153, 34, 0.08);
+}
+.feed-time {
+    color: #8b949e;
+    font-size: 0.6rem;
+    margin-right: 4px;
+    font-weight: 600;
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Botón Toggle Mapa Satelital ── */
+.map-toggle-btn {
+    position: absolute;
+    bottom: 90px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(13, 17, 23, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e6edf3;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+.map-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+.map-toggle-btn:active {
+    transform: translateY(0);
+}
