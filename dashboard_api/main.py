@@ -28,7 +28,19 @@ def fetch_data_from_hdfs_loop():
     while True:
         try:
             fs = fsspec.filesystem('webhdfs', host=HDFS_HOST, port=HDFS_PORT, user='root')
-            dataset = ds.dataset(HDFS_PATH, filesystem=fs, format="parquet", partitioning="hive")
+            
+            # Buscar todos los archivos y filtrar los de 0 bytes
+            files_info = fs.find(HDFS_PATH, detail=True)
+            valid_files = [
+                path for path, info in files_info.items() 
+                if path.endswith('.parquet') and info.get('size', 0) > 0
+            ]
+            
+            if not valid_files:
+                time.sleep(5)
+                continue
+                
+            dataset = ds.dataset(valid_files, filesystem=fs, format="parquet", partitioning="hive")
             df = dataset.to_table().to_pandas()
             
             if not df.empty:
