@@ -2,7 +2,7 @@
 
 ![Arquitectura del Proyecto](docs/images/arquitectura%20del%20pipeline.png)
 
-> **📄 Informe Técnico Oficial:** Puedes consultar la investigación completa, el diseño de infraestructura y todas las justificaciones académicas en el documento PDF adjunto: [**Proyecto Final.pdf**](Proyecto%20Final.pdf)
+> **📄 Informe Técnico Oficial:** Puedes consultar la investigación completa, el diseño de infraestructura y todas las justificaciones académicas en el documento PDF adjunto: [**Proyecto Final.pdf**](docs/Proyecto%20Final.pdf)
 
 ## 📖 Descripción General
 Este proyecto implementa una arquitectura **Event-Driven de Big Data** diseñada para ingerir, procesar, almacenar y visualizar datos climáticos en tiempo cuasi-real. Su objetivo es monitorear el impacto del Fenómeno de El Niño en Ecuador, cruzando datos de precipitación (Open-Meteo) y mareas (INOCAR simulado) para generar **rutas de evacuación inteligentes** utilizando OSRM ante riesgos de inundación por represamiento en provincias vulnerables.
