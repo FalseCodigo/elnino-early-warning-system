@@ -102,8 +102,6 @@ Abre tu navegador y entra a:
 
 ## 📸 Vistas de la Aplicación
 
-*(NOTA PARA EL DESARROLLADOR: Por favor toma estas 3 capturas desde tu navegador, nómbralas exactamente como se indica abajo y guárdalas en la carpeta `docs/images/` para que aparezcan en este README)*
-
 ### 1. Vista General y Live Feed
 Muestra el estado cartográfico de las 24 provincias, el panel *Glassmorphism* con las estadísticas generales y el "Chat" de reportes técnicos a la izquierda.
 ![Vista General](docs/images/vista_general.png)
